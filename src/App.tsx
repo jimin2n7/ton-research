@@ -1,13 +1,11 @@
 import './App.css';
 import { TonConnectButton } from '@tonconnect/ui-react';
-import { useTonConnect } from './hooks/useTonConnect';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 import '@twa-dev/sdk';
 import { useState } from 'react';
 
 
 function App() {
-  const { connected } = useTonConnect();
   const [tonConnectUI] = useTonConnectUI();
 
   const [addressWallet, setAddressWallet] = useState()
@@ -71,9 +69,9 @@ function App() {
             <input type="number" name="amount" id="amount" onChange={handleChangeAmount} />
           </div>
           <div>
-            <a className={`Button ${connected ? 'Active' : 'Disabled'}`} type="submit">
+            <button className="Button" type="submit">
               Send Transaction
-            </a>
+            </button>
           </div>
 
         </form>
