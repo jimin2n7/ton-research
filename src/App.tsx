@@ -17,24 +17,10 @@ interface Transaction {
 
 function App() {
   const { connected } = useTonConnect();
-  const { value, address, sendIncrement } = useCounterContract();
   const [tonConnectUI] = useTonConnectUI();
 
   const [addressWallet, setAddressWallet] = useState()
   const [amount, setAmount] = useState()
-
-
-
-
-  const transaction = {
-    messages: [
-      {
-        address: "0QBol9ME6gMl8gtbjWOG879WLEjp6kASW_SLMQtZdyIG7sq_", // destination address
-        amount: "20000000" //Toncoin in nanotons
-      }
-    ]
-
-  }
 
   const handleChangeAddress = (e: any) => {
     setAddressWallet(e.target.value)
