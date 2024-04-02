@@ -7,7 +7,6 @@ import { useState } from 'react';
 
 
 function App() {
-  const { connected } = useTonConnect();
   const [tonConnectUI] = useTonConnectUI();
 
   const [addressWallet, setAddressWallet] = useState()
