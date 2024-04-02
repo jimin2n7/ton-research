@@ -2,19 +2,69 @@ import './App.css';
 import { TonConnectButton } from '@tonconnect/ui-react';
 import { useTonConnect } from './hooks/useTonConnect';
 import { useCounterContract } from './hooks/useCounterContract';
+import { useTonConnectUI } from '@tonconnect/ui-react';
 import '@twa-dev/sdk';
+import { useState } from 'react';
 
+interface Message {
+  address: string;
+  amount: number;
+}
+
+interface Transaction {
+  messages: Message[];
+}
 
 function App() {
   const { connected } = useTonConnect();
   const { value, address, sendIncrement } = useCounterContract();
+  const [tonConnectUI] = useTonConnectUI();
+
+  const [addressWallet, setAddressWallet] = useState()
+  const [amount, setAmount] = useState()
+
+
+
+
+  const transaction = {
+    messages: [
+      {
+        address: "0QBol9ME6gMl8gtbjWOG879WLEjp6kASW_SLMQtZdyIG7sq_", // destination address
+        amount: "20000000" //Toncoin in nanotons
+      }
+    ]
+
+  }
+
+  const handleChangeAddress = (e: any) => {
+    setAddressWallet(e.target.value)
+  }
+
+  const handleChangeAmount = (e: any) => {
+    setAmount(e.target.value)
+  }
+
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+
+    const transaction: any = {
+      messages: [
+        {
+          address: addressWallet, // destination address
+          amount: amount //Toncoin in nanotons
+        }
+      ]
+
+    }
+    tonConnectUI.sendTransaction(transaction)
+  }
 
   return (
     <div className='App'>
       <div className='Container'>
         <TonConnectButton />
-
-        <div className='Card'>
+        {/* <div className='Card'>
           <b>Counter Address</b>
           <div className='Hint'>{address?.slice(0, 30) + '...'}</div>
         </div>
@@ -31,7 +81,26 @@ function App() {
           }}
         >
           Increment
-        </a>
+        </a> */}
+        <form onSubmit={handleSubmit}>
+          <div className="inputControl">
+            <label htmlFor="address">Address:</label>
+
+            <input type="text" name="address" id="address" onChange={handleChangeAddress} />
+          </div>
+          <div className="inputControl">
+            <label htmlFor="amount">Amount:</label>
+
+            <input type="number" name="amount" id="amount" onChange={handleChangeAmount} />
+          </div>
+          <div>
+            <a className={`Button ${connected ? 'Active' : 'Disabled'}`} type="submit">
+              Send Transaction
+            </a>
+          </div>
+
+        </form>
+
       </div>
     </div>
   );

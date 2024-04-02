@@ -52,6 +52,42 @@
   background-color: white;
 }
 
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputControl {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input {
+  outline: none;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  width: 100%;
+  /* height: 40px; */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+a{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --tg-theme-bg-color: #131415;
