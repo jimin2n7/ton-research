@@ -3,12 +3,13 @@ import { TonConnectButton } from '@tonconnect/ui-react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 import '@twa-dev/sdk';
 import { useState } from 'react';
+import { Address} from '@ton/core';
 
 
 function App() {
   const [tonConnectUI] = useTonConnectUI();
 
-  const [addressWallet, setAddressWallet] = useState()
+  const [addressWallet, setAddressWallet] = useState<string>('')
   const [amount, setAmount] = useState()
 
   const handleChangeAddress = (e: any) => {
@@ -26,7 +27,7 @@ function App() {
     const transaction: any = {
       messages: [
         {
-          address: addressWallet, // destination address
+          address: Address.parse(addressWallet), // destination address
           amount: amount //Toncoin in nanotons
         }
       ]
