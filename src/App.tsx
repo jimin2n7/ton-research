@@ -57,23 +57,22 @@ function App() {
         >
           Increment
         </a> */}
+        
         <form onSubmit={handleSubmit}>
           <div className="inputControl">
             <label htmlFor="address">Address:</label>
-
-            <input type="text" name="address" id="address" onChange={handleChangeAddress} />
+            <input className="input" type="text" name="address" id="address" onChange={handleChangeAddress} />
           </div>
           <div className="inputControl">
             <label htmlFor="amount">Amount:</label>
 
-            <input type="number" name="amount" id="amount" onChange={handleChangeAmount} />
+            <input className="input" type="number" name="amount" id="amount" onChange={handleChangeAmount} />
           </div>
           <div>
             <button className="Button" type="submit">
               Send Transaction
             </button>
           </div>
-
         </form>
 
       </div>
