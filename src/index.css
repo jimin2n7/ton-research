@@ -83,6 +83,11 @@ input {
   border-radius: 12px;
 }
 
+button {
+  outline: none;
+  border: 1px solid #ccc;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {

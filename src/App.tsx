@@ -71,7 +71,7 @@ function App() {
             <input type="number" name="amount" id="amount" onChange={handleChangeAmount} />
           </div>
           <div>
-            <button className={`Button ${connected ? 'Active' : 'Disabled'}`} type="submit">
+            <button className="Button" type="submit">
               Send Transaction
             </button>
           </div>
